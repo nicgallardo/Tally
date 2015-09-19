@@ -44,7 +44,10 @@ var finalCombine = [];
 var finalOutput = {};
 var keys = Object.keys(myTestObj);
 var value = new Array;
-var test;
+var estimates = myTestObj.estimates;
+var finalOutput = {};
+var output = [];
+
 
 for(var val in myTestObj) {
   value.push(myTestObj[val]);
@@ -62,45 +65,23 @@ function combine (array1, array2){
   finalCombine = finalCombine[0].concat(finalCombine[1]);
 }
 combine(keys, value)
-console.log(finalCombine);
 
+for(var i = 0; i <estimates.length ; i++){
+  for (var key in estimates[i]) {
+    if(!estimates[i][key] == " "){
+    output.push(estimates[i][key]);
+    }
+  }
+};
+var combineAll = finalCombine.concat(output);
 
-// function toObj(array){
-//   for(var i = 0; i < array.length; i++){
-//     if(i % 2 == 0){
-//       finalOutput[array[i]] = array[i+1];
-//     }
-//   }
-// }
-// toObj(combineArray)
-// console.log(finalOutput)
+function toObj(array){
+  for(var i = 0; i < array.length; i++){
+    if(i % 2 == 0){
+      finalOutput[array[i]] = array[i+1];
+    }
+  }
+}
+toObj(combineAll)
 
-  // var output = {};
-  // for(var prop in myTestObj){
-  //   // output = prop;
-  //   output(prop + ": " + myTestObj[prop]);
-  // }
-  // console.log(output)
-//WORKS!!!!!!!!!!!!!
-// var estimates = myTestObj.estimates;
-// var finalOutput = {};
-// var output = [];
-//
-// for(var i = 0; i <estimates.length ; i++){
-//   for (var key in estimates[i]) {
-//     if(!estimates[i][key] == " "){
-//     output.push(estimates[i][key]);
-//     }
-//   }
-// };
-//
-// function toObj(array){
-//   for(var i = 0; i < array.length; i++){
-//     if(i % 2 == 0){
-//       finalOutput[array[i]] = array[i+1];
-//     }
-//   }
-// }
-// toObj(output)
-//
-// console.log(finalOutput);
+console.log(finalOutput);
