@@ -48,11 +48,11 @@ var estimates = myTestObj.estimates;
 var finalOutput = {};
 var output = [];
 
-
+//for in finds value of key
 for(var val in myTestObj) {
   value.push(myTestObj[val]);
 }
-
+//takes key and value and creates array
 function combine (array1, array2){
   for(var i = 0; i <array1.length; i++){
     if(array1[i] == "title" || array1[i] == "topic"){
@@ -65,7 +65,7 @@ function combine (array1, array2){
   finalCombine = finalCombine[0].concat(finalCombine[1]);
 }
 combine(keys, value)
-
+//
 for(var i = 0; i <estimates.length ; i++){
   for (var key in estimates[i]) {
     if(!estimates[i][key] == " "){
@@ -73,8 +73,9 @@ for(var i = 0; i <estimates.length ; i++){
     }
   }
 };
+//concats data from first object turned into array with subj array
 var combineAll = finalCombine.concat(output);
-
+//plaves array into object now able to graph
 function toObj(array){
   for(var i = 0; i < array.length; i++){
     if(i % 2 == 0){
@@ -85,3 +86,17 @@ function toObj(array){
 toObj(combineAll)
 
 console.log(finalOutput);
+
+
+
+
+////fr json data
+var bucket = [];
+    testCase = "2016";
+for(var i = 0; i <test.length; i++){
+  if(test[i].title.indexOf(testCase) > -1){
+    bucket.push(test[i].title, test[i].short_title, test[i].estimates);
+  }
+}
+
+console.log(bucket[2]);
