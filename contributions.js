@@ -16,25 +16,29 @@ var q2DemContributions =[{"Candidate":"Clinton, Hillary Rodham**","Federal Match
 {"Candidate":"O'Malley, Martin Joseph**","Federal Matching Funds":"$0","contributions From individuals":"$1,964,349","Contributions for Cmte’s Minus Refunds":"$21,795","Contri and Loans from the Candidate Minus Repayments":"$0","Other Loans Minus Repayments":"$0","Transfer From Previous Campaigns":"$0","Other Receipts":"$0","Total":"$1,986,144"},
 {"Candidate":"Sanders, Bernard**","Federal Matching Funds":"$0","contributions From individuals":"$13,612,749","Contributions for Cmte’s Minus Refunds":"$0","Contri and Loans from the Candidate Minus Repayments":"$0","Other Loans Minus Repayments":"$0","Transfer From Previous Campaigns":"$1,500,000","Other Receipts":"$1,873","Total":"$15,114,622"}]
 
+var output = [],
+    finalOutput = [];
 
 function createGraphArray (data){
-  var output = [],
-      rawAmt = [],
-      nameOutput = [];
-
+  var rawAmt = "",
+      nameOutput = "";
   for(var i = 0; i < data.length; i++){
-    trimName(data[i].Candidate);
+    var graphingObject  = {};
     function trimName (string){
       var arrayName = string.split(",");
           nameOutput = arrayName[0];
     }
-    findTotal(data[i].Total)
+    trimName(data[i].Candidate);
     function findTotal (amount){
       rawAmt= amount.replace(/[^\w\s]/gi, '');
     }
-    output.push(nameOutput);
-    output.push(rawAmt);
+    findTotal(data[i].Total)
+
+    graphingObject["Candidate"] = nameOutput;
+    graphingObject["Total"] = rawAmt;
+    finalOutput.push(graphingObject)
   }
-  console.log(output);
 }
-createGraphArray(q2DemContributions)
+createGraphArray(Q2republicanContributions);
+
+console.log(finalOutput)
