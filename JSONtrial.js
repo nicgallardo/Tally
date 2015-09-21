@@ -19937,12 +19937,21 @@ var test = [
 ]
 var bucket = [],
     output = [],
+    trial = [],
+    finalOutput = {},
     combineArray = "  ",
     testCase = "2016";
-//pulls all title that contain 2016 -works
+//pulls all title that contains 2016 -works
 for(var i = 0; i <test.length; i++){
   if(test[i].title.indexOf(testCase) > -1){
     bucket.push(test[i].short_title, test[i].estimates);
+  }
+}
+console.log(bucket)
+// console.log(JSON.stringify(bucket[1]))
+for(var i = 0; i < bucket.length; i++){
+  if(typeof bucket[i] == 'string'){
+    trial.push("title: " + bucket[i]);
   }
 }
 
@@ -19953,4 +19962,4 @@ for(var prop in smallObj){
     output.push(prop + " : " + smallObj[prop])
   }
 }
-// console.log(output);
+// console.log(JSON.stringify(output));
